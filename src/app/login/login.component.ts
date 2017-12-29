@@ -23,8 +23,16 @@ export class LoginComponent implements OnInit {
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6),
         Validators.maxLength(25)
-      ]]
+      ]],
+      'region': [ '', [ ] ]
     });
+  }
+
+  get email() { return this.signinForm.get('email'); }
+  get password() { return this.signinForm.get('password'); }
+
+  signin() {
+    return this.auth.emailLogin(this.email.value, this.password.value);
   }
 
 }

@@ -8,6 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { User } from '../user';
+import { NotifyService } from './notify.service';
 
 @Injectable()
 export class AuthService {
@@ -16,8 +17,9 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
-              private router: Router) {
-                this.user = this.afAuth.authState
+              private router: Router,
+              private notify: NotifyService) {
+          this.user = this.afAuth.authState
                   .switchMap(user => {
                     if (user) {
                       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -29,11 +31,34 @@ export class AuthService {
 
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.setUserDoc(user);
+        this.router.navigate(['/']);
+      })
       .catch(error => this.handleError (error));
+  }
+
+  private setUserDoc(user) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+
+    const data: User = {
+      uid: user.uid,
+      email: user.email || null,
+      photoURL: 'https://goo.gl/Fz9nrQ'
+    };
+
+    return userRef.set(data);
+
   }
 
   private handleError(error) {
     console.error(error);
-    // this.notify.update(error.message, 'error');
+    this.notify.update(error.message, 'error');
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut().then(() => {
+        this.router.navigate(['/login']);
+    });
   }
 }

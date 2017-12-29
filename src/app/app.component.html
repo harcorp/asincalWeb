@@ -1,1 +1,35 @@
+<mat-toolbar color="primary" *ngIf="(auth.user | async)">
+    <mat-toolbar-row>
+      <span>Asincal</span>
+  
+      <span class="example-spacer"></span>
+      
+      <button mat-button>About</button>
+      <button mat-button>Services</button>
+      <button mat-button>Contact</button>
+      <button mat-button (click)="auth.signOut()">Cerrar Sesión</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-toolbar color="primary" *ngIf="!(auth.user | async)">
+      <mat-toolbar-row>
+        <span>Asincal</span>
+    
+        <span class="example-spacer"></span>
+        
+        <button mat-button>Registro</button>
+        <button mat-button>Login</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    
 <router-outlet></router-outlet>
+
+<div *ngIf="notify.msg | async as msg" class="notification"
+        [ngClass]="{ 
+                     'is-danger': msg.style == 'error',
+                     'is-success': msg.style == 'success',
+                     'is-info': msg.style == 'info'
+                    }">
+     
+     <button class="delete" (click)="notify.clear()"></button>
+     {{ msg.content }}
+ </div>
