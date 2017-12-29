@@ -46,7 +46,7 @@ export class UsersComponent implements AfterViewInit {
 
   openDialog(data): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '350px',
+      width: '90%',
       data: data
     });
   }
@@ -61,14 +61,14 @@ export class UsersComponent implements AfterViewInit {
       lastName: faker.name.lastName(),
       mobile: faker.phone.phoneNumber(),
       email: faker.internet.email(),
-      uid: faker.random.alphaNumeric(16),
+      uid: faker.random.alphaNumeric(24),
       roles: {
         afiliado: true,
       },
-      photoURL: 'https://goo.gl/Fz9nrQ',
+      photoURL: faker.image.imageUrl(30, 30),
       address: faker.address.streetAddress(),
     };
-    this.afs.collection('users').doc(user.uid).set(user);
+    this.afs.collection('users').doc(user.uid).set(user, { merge: true });
   }
 
 }

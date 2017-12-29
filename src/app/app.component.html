@@ -4,8 +4,8 @@
   
       <span class="example-spacer"></span>
       
-      <button mat-button>About</button>
-      <button mat-button>Services</button>
+      <a mat-button routerLink="/" >Dashboard</a>
+      <a mat-button routerLink="/usuarios" >Usuarios</a>
       <button mat-button>Contact</button>
       <button mat-button (click)="auth.signOut()">Cerrar Sesión</button>
     </mat-toolbar-row>
