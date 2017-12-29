@@ -57,16 +57,22 @@ export class UsersComponent implements AfterViewInit {
 
   addOne() {
     const user: User = {
+      uid: faker.random.alphaNumeric(24),
+      email: faker.internet.email(),
+      photoURL: faker.image.imageUrl(400, 400),
+      mobile: faker.phone.phoneNumber(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
-      mobile: faker.phone.phoneNumber(),
-      email: faker.internet.email(),
-      uid: faker.random.alphaNumeric(24),
+      address: faker.address.streetAddress(),
+      active: true,
+      place: faker.random.number({ min: 1, max: 10 }),
+      docType: faker.random.number({ min: 1, max: 4}),
+      docNumber: faker.random.number({ min: 1000000, max: 800000000}),
+      observations: faker.random.words(10),
+      city: faker.address.city(),
       roles: {
         afiliado: true,
       },
-      photoURL: faker.image.imageUrl(30, 30),
-      address: faker.address.streetAddress(),
     };
     this.afs.collection('users').doc(user.uid).set(user, { merge: true });
   }

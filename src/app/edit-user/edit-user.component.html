@@ -1,5 +1,54 @@
+<mat-grid-list cols="2" >
+  <mat-grid-tile>
+    <mat-nav-list>
+      <mat-list-item>
+        <h3 matLine> Nombres </h3>
+        <p matLine> {{user.firstName }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> Apellidos </h3>
+        <p matLine> {{user.lastName }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> Tipo de Documento </h3>
+        <p matLine> {{user.docType }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> No. de Documento </h3>
+        <p matLine> {{user.docNumber }}</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-nav-list>
+      <mat-list-item>
+        <h3 matLine> E-mail </h3>
+        <p matLine> {{user.email }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> Dirección </h3>
+        <p matLine> {{user.address }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> Ciudad </h3>
+        <p matLine> {{user.city }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> Sede </h3>
+        <p matLine> {{user.place }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 matLine> Observaciones </h3>
+        <p> {{user.observations }}</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-grid-tile>
+</mat-grid-list>
+<!--
 <mat-form-field>
-    <input matInput [(ngModel)]="user.email" placeholder="new email address">
-  </mat-form-field>
+  <input matInput [(ngModel)]="user.email" placeholder="new email address">
+</mat-form-field>
 
 <button mat-raised-button (click)="updateEmail()">Save</button>
+
+-->
