@@ -1,8 +1,13 @@
+export interface Roles {
+    afiliado?: boolean;
+    admin?: boolean;
+    superAdmin?: boolean;
+}
 export interface User {
     uid: string;
     email: string;
     photoURL?: string;
-    mobile?: number;
+    mobile?: string;
     displayName?: string;
     firstName?: string;
     lastName?: string;
@@ -13,4 +18,5 @@ export interface User {
     docNumber?: number;
     observations?: string;
     city?: string;
+    roles: Roles;
 }

@@ -44,7 +44,10 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email || null,
-      photoURL: 'https://goo.gl/Fz9nrQ'
+      photoURL: 'https://goo.gl/Fz9nrQ',
+      roles: {
+        afiliado: true
+      }
     };
 
     return userRef.set(data);
