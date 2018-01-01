@@ -46,7 +46,8 @@ export class UsersComponent implements AfterViewInit {
 
   openDialog(data): void {
     const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '90%',
+      width: '80%',
+      height: 'auto',
       data: data
     });
   }
