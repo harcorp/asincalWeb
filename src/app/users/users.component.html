@@ -2,7 +2,7 @@
 <div class="container mat-elevation-z8">
   <div class="header">
     <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
     </mat-form-field>
   </div>
   <mat-table #table [dataSource]="dataSource" matSort [trackBy]="trackByUid" class="animate">
@@ -24,8 +24,8 @@
       <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="place">
-      <mat-header-cell *matHeaderCellDef> Sede </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.place}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Sede </mat-header-cell>
+      <mat-cell *matCellDef="let user" (click)="goToPlace(user.uid)"> {{ user.place | placeName | async}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">

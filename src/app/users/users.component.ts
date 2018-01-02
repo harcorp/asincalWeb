@@ -66,8 +66,8 @@ export class UsersComponent implements AfterViewInit {
       lastName: faker.name.lastName(),
       address: faker.address.streetAddress(),
       active: true,
-      place: faker.random.number({ min: 1, max: 10 }),
-      docType: faker.random.number({ min: 1, max: 4}),
+      place: 'ZEA4R9qDDbefVneQ0duA',
+      docType: faker.random.number({ min: 0, max: 3}),
       docNumber: faker.random.number({ min: 1000000, max: 800000000}),
       observations: faker.random.words(10),
       city: faker.address.city(),
@@ -76,6 +76,10 @@ export class UsersComponent implements AfterViewInit {
       },
     };
     this.afs.collection('users').doc(user.uid).set(user, { merge: true });
+  }
+
+  goToPlace(uid: string){
+    
   }
 
 }

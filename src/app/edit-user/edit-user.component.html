@@ -24,7 +24,7 @@
       <mat-nav-list>
         <mat-list-item>
           <h3 matLine> Tipo de Documento </h3>
-          <p matLine> {{user.docType }}</p>
+          <p matLine> {{ user.docType | docType }}</p>
         </mat-list-item>
       </mat-nav-list>
     </mat-grid-tile>
@@ -33,7 +33,7 @@
       <mat-nav-list>
         <mat-list-item>
           <h3 matLine> No. de Documento </h3>
-          <p matLine> {{user.docNumber }}</p>
+          <p matLine> {{ user.docNumber }}</p>
         </mat-list-item>
       </mat-nav-list>
     </mat-grid-tile>
@@ -69,7 +69,7 @@
       <mat-nav-list>
         <mat-list-item>
           <h3 matLine> Sede </h3>
-          <p matLine> {{user.place }}</p>
+          <p matLine> {{user.place | placeName | async }}</p>
         </mat-list-item>
       </mat-nav-list>
     </mat-grid-tile>

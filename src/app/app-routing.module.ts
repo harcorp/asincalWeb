@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './core/auth.guard';
 import { UsersComponent } from './users/users.component';
+import { PlacesComponent } from './places/places.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'usuarios', component: UsersComponent }
+  { path: 'usuarios', component: UsersComponent },
+  { path: 'establecimientos', component: PlacesComponent }
 ];
 
 @NgModule({

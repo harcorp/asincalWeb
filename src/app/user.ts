@@ -13,7 +13,7 @@ export interface User {
     lastName?: string;
     address?: string;
     active?: boolean;
-    place?: number;
+    place?: string;
     docType?: number;
     docNumber?: number;
     observations?: string;

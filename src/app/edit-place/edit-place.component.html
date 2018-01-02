@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Datos del Establecimiento</h2>
+<mat-dialog-content>
+  <mat-grid-list cols="4" rowHeight="60px">
+    <mat-grid-tile>
+      <mat-nav-list>
+        <mat-list-item>
+          <h3 matLine>Nombre </h3>
+          <p matLine> {{place.name }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-nav-list>
+        <mat-list-item>
+          <h3 matLine>Administrador </h3>
+          <p matLine> {{place.adminUid }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-nav-list>
+        <mat-list-item>
+          <h3 matLine>Dirección </h3>
+          <p matLine> {{place.address }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-nav-list>
+        <mat-list-item>
+          <h3 matLine>Ciudad </h3>
+          <p matLine> {{place.city }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-nav-list>
+        <mat-list-item>
+          <h3 matLine>Departamento </h3>
+          <p matLine> {{place.state }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-nav-list>
+        <mat-list-item>
+          <h3 matLine>Teléfono </h3>
+          <p matLine> {{place.phone }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-grid-tile>
+    
+  </mat-grid-list>
+</mat-dialog-content>
+<!--
+<mat-form-field>
+  <input matInput [(ngModel)]="place.email" placeholder="new email address">
+</mat-form-field>
+
+<button mat-raised-button (click)="updateEmail()">Save</button>
+
+-->

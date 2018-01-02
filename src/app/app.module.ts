@@ -14,6 +14,8 @@ import { MaterialModule } from './material/material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PlacesComponent } from './places/places.component';
+import { EditPlaceComponent } from './edit-place/edit-place.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     LoginComponent,
     DashboardComponent,
     UsersComponent,
-    EditUserComponent
+    EditUserComponent,
+    PlacesComponent,
+    EditPlaceComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,6 @@ import { EditUserComponent } from './edit-user/edit-user.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditUserComponent]
+  entryComponents: [EditUserComponent, EditPlaceComponent]
 })
 export class AppModule { }

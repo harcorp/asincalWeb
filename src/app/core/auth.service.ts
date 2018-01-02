@@ -32,7 +32,7 @@ export class AuthService {
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((user) => {
-        this.setUserDoc(user);
+        //this.setUserDoc(user);
         this.router.navigate(['/']);
       })
       .catch(error => this.handleError (error));
