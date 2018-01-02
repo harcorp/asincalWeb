@@ -10,7 +10,8 @@ export class DocTypePipe implements PipeTransform {
     'Cedula de extrangeria',
     'Pasaporte',
     'Otro'
-  ]
+  ];
+  
   transform(value: any, args?: any): any {
     return this.docType[value];
   }

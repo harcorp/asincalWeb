@@ -16,6 +16,7 @@ import { UsersComponent } from './users/users.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PlacesComponent } from './places/places.component';
 import { EditPlaceComponent } from './edit-place/edit-place.component';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditPlaceComponent } from './edit-place/edit-place.component';
     UsersComponent,
     EditUserComponent,
     PlacesComponent,
-    EditPlaceComponent
+    EditPlaceComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,6 @@ import { EditPlaceComponent } from './edit-place/edit-place.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditUserComponent, EditPlaceComponent]
+  entryComponents: [EditUserComponent, EditPlaceComponent, AddUserComponent]
 })
 export class AppModule { }

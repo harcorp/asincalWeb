@@ -1,0 +1,95 @@
+<h2 mat-dialog-title>Agregar Usuario</h2>
+<mat-dialog-content>
+  <form [formGroup]="addForm">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nombres" formControlName="firstName" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['firstName'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Apellidos" formControlName="lastName" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['lastName'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['email'].valid">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Celular" formControlName="mobile" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['mobile'].valid">
+        Ingrese un telefono valido de 10 digitos
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Dirección" formControlName="address" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['address'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Ciudad" formControlName="city" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['city'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Departamento" formControlName="state" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['state'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Tipo de Documento" formControlName="docType" [errorStateMatcher]="matcher">
+        <mat-option *ngFor="let item of docType; let id = index" [value]="id">
+          {{ item }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Perfil de Usuario" formControlName="role" [errorStateMatcher]="matcher">
+          <mat-option *ngFor="let item of roles; let id = index" [value]="id">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+          <mat-select placeholder="Establecimiento Asociado" formControlName="place" [errorStateMatcher]="matcher">
+            <mat-option *ngFor="let place of places | async" [value]="place.id">
+              {{ place.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Numero de documento" formControlName="docNumber" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['docNumber'].valid">
+        Ingrese un numero de identificación valido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Observaciones" formControlName="observations" [errorStateMatcher]="matcher"></textarea>
+      <mat-error *ngIf="!addForm.controls['observations'].valid">
+        Maximo 255 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="submit()" [disabled]="!addForm.valid">Registrar</button>
+
+  </form>
+</mat-dialog-content>

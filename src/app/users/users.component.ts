@@ -6,6 +6,7 @@ import { MatTableDataSource, MatSort, MatDialog, MatPaginator } from '@angular/m
 import { EditUserComponent } from '../edit-user/edit-user.component';
 
 import * as faker from 'faker';
+import { AddUserComponent } from '../add-user/add-user.component';
 
 @Component({
   selector: 'app-users',
@@ -54,6 +55,13 @@ export class UsersComponent implements AfterViewInit {
 
   trackByUid(index, item) {
     return item.uid;
+  }
+
+  addUser() {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      width: '80%',
+      height: 'auto'
+    });
   }
 
   addOne() {

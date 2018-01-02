@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { User } from 'firebase/app';
+import { User } from '../user';
 
 @Component({
   selector: 'app-edit-user',
@@ -11,6 +11,7 @@ import { User } from 'firebase/app';
 export class EditUserComponent {
 
   user: User;
+
 
   constructor(private afs: AngularFirestore,
               private dialogRef: MatDialogRef<EditUserComponent>,
