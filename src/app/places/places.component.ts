@@ -17,7 +17,7 @@ export class PlacesComponent implements AfterViewInit {
     'city',
     'address',
     'edit'
-  ]
+  ];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -31,7 +31,7 @@ export class PlacesComponent implements AfterViewInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-    })
+    });
   }
 
   applyFilter(filterValue: string) {

@@ -8,12 +8,12 @@ import { Places } from '../places';
 })
 export class PlaceNamePipe implements PipeTransform {
 
-  constructor(private afs: AngularFirestore){
+  constructor(private afs: AngularFirestore) {
 
   }
 
   transform(value: any, args?: any): any {
-    if(value == undefined){
+    if (value === undefined) {
       return null;
     }
     return new Promise(resolve => {

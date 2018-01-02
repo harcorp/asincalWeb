@@ -86,8 +86,6 @@ export class UsersComponent implements AfterViewInit {
     this.afs.collection('users').doc(user.uid).set(user, { merge: true });
   }
 
-  goToPlace(uid: string){
-    
-  }
+  goToPlace(uid: string) {}
 
 }

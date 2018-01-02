@@ -11,7 +11,7 @@ export class DocTypePipe implements PipeTransform {
     'Pasaporte',
     'Otro'
   ];
-  
+
   transform(value: any, args?: any): any {
     return this.docType[value];
   }
