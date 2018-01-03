@@ -1,5 +1,6 @@
 <h2 mat-dialog-title>Agregar Usuario</h2>
-<mat-dialog-content>
+<mat-spinner *ngIf="submited"></mat-spinner>
+<mat-dialog-content *ngIf="!submited">
   <form [formGroup]="addForm">
 
     <mat-form-field class="example-full-width">
@@ -20,6 +21,13 @@
       <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
       <mat-error *ngIf="!addForm.controls['email'].valid">
         Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Contraseña" type="password" formControlName="password" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['password'].valid">
+        Ingrese una contraseña.
       </mat-error>
     </mat-form-field>
 
@@ -89,7 +97,8 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-button color="primary" (click)="submit()" [disabled]="!addForm.valid">Registrar</button>
+    <!-- <button mat-button color="primary" (click)="submit()" [disabled]="!addForm.valid">Registrar</button> -->
+    <button mat-button color="primary" (click)="submit()">Registrar</button>
 
   </form>
 </mat-dialog-content>

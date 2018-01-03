@@ -6,6 +6,8 @@ import { EmailValidator } from '../core/emailValidator';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Places } from '../places';
+import { AuthService } from '../core/auth.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -26,6 +28,7 @@ export class AddUserComponent {
   places: Observable<Places[]>;
   user: User = null;
   addForm: any;
+  submited = false;
   emailFormControl: any;
   docType = [
     'Cedula de Ciudadania',
@@ -41,7 +44,10 @@ export class AddUserComponent {
   ];
 
   matcher = new MyErrorStateMatcher();
-  constructor(private fb: FormBuilder, private afs: AngularFirestore) {
+  constructor(private fb: FormBuilder,
+              private afs: AngularFirestore,
+              private auth: AuthService,
+              private dialogRef: MatDialogRef<AddUserComponent>) {
 
     this.itemsCollection = afs.collection<Places>('places');
     this.places = this.itemsCollection.snapshotChanges().map(actions => {
@@ -53,6 +59,7 @@ export class AddUserComponent {
     });
     this.addForm = this.fb.group({
       'firstName' : ['', Validators.compose([Validators.required])],
+      'password' : ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       'lastName' : ['', Validators.compose([Validators.required])],
       'docType' : ['', Validators.compose([Validators.required])],
       'docNumber' : ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]+$')])],
@@ -68,11 +75,23 @@ export class AddUserComponent {
         Validators.maxLength(10),
         Validators.pattern('^[0-9]+$')
       ])],
-      'email' : ['', Validators.compose([EmailValidator.isValid, Validators.required, ])]
+      'email' : ['', Validators.compose([EmailValidator.isValid, Validators.required])]
     });
   }
 
   submit() {
-    console.log(this.addForm.value);
+    this.submited = true;
+    this.user = this.addForm.value;
+    this.auth.createUser(this.user).then(resolve => {
+      console.log(resolve);
+    });
+    /* this.auth.createUserWithEmail(this.addForm.value.email, this.addForm.value.password).then(value => {
+      console.log('User ' + value.uid + ' created successfully!');
+      console.log(value);
+      this.dialogRef.close();
+    }).catch(error => {
+      console.log(error);
+      this.submited = !this.submited;
+    }); */
   }
 }

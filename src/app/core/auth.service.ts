@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
 import { User } from '../user';
 import { NotifyService } from './notify.service';
 
@@ -14,11 +16,14 @@ import { NotifyService } from './notify.service';
 export class AuthService {
 
   user: Observable<User>;
+  private usersURL = 'http://localhost:6969/api/users';
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router,
-              private notify: NotifyService) {
+              private notify: NotifyService,
+              private http: Http) {
+
           this.user = this.afAuth.authState
                   .switchMap(user => {
                     if (user) {
@@ -36,6 +41,13 @@ export class AuthService {
         this.router.navigate(['/']);
       })
       .catch(error => this.handleError (error));
+  }
+
+  createUser(newUser: User): Promise<void | User> {
+    return this.http.post(this.usersURL, newUser)
+                 .toPromise()
+                 .then(response => response.json() as User)
+                 .catch(this.handleError);
   }
 
   private setUserDoc(user) {
