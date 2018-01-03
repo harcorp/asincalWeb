@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,6 +18,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { PlacesComponent } from './places/places.component';
 import { EditPlaceComponent } from './edit-place/edit-place.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { Http } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { AddUserComponent } from './add-user/add-user.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent],

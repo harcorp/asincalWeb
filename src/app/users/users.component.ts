@@ -2,11 +2,13 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user';
+import { Http, Response } from '@angular/http';
 import { MatTableDataSource, MatSort, MatDialog, MatPaginator } from '@angular/material';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 
 import * as faker from 'faker';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -28,7 +30,10 @@ export class UsersComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private afs: AngularFirestore, public dialog: MatDialog) {
+  constructor(private afs: AngularFirestore,
+              public dialog: MatDialog,
+              private http: Http,
+              private auth: AuthService) {
    }
 
   ngAfterViewInit() {
@@ -83,9 +88,11 @@ export class UsersComponent implements AfterViewInit {
         afiliado: true,
       },
     };
-    this.afs.collection('users').doc(user.uid).set(user, { merge: true });
+    // this.afs.collection('users').doc(user.uid).set(user, { merge: true });
   }
 
   goToPlace(uid: string) {}
+
+
 
 }

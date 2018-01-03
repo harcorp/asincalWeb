@@ -12,7 +12,6 @@ export class EditUserComponent {
 
   user: User;
 
-
   constructor(private afs: AngularFirestore,
               private dialogRef: MatDialogRef<EditUserComponent>,
             @Inject(MAT_DIALOG_DATA) public data: any) {
