@@ -43,11 +43,33 @@ export class AuthService {
       .catch(error => this.handleError (error));
   }
 
-  createUser(newUser: User): Promise<void | User> {
+  createUser(newUser: User): Promise<void> {
     return this.http.post(this.usersURL, newUser)
                  .toPromise()
-                 .then(response => response.json() as User)
-                 .catch(this.handleError);
+                 .then(response => response.json())
+                 .catch(e => {
+                    console.log(e.json().error);
+                    this.handleError(e);
+                  });
+  }
+    private showLoader(): void {
+      this.notify.showLoader();
+  }
+  createUserFinal(newUser: User) {
+    this.showLoader();
+    const promise = new Promise((resolve, reject) => {
+      this.http.post(this.usersURL, newUser)
+        .toPromise()
+        .then(res => {
+          resolve();
+        })
+        .catch(e => {
+           this.handleError(e);
+           this.notify.hideLoader();
+         });
+    });
+
+    return promise;
   }
 
   private setUserDoc(user) {
@@ -67,8 +89,21 @@ export class AuthService {
   }
 
   private handleError(error) {
-    console.error(error);
-    this.notify.update(error.message, 'error');
+    switch (error.json().error) {
+      case 'auth/invalid-email':
+        error = 'Ingrese un correo valido';
+        break;
+      case 'auth/phone-number-already-exists':
+        error = 'El numero de telefono que ingreso ya esta registrado';
+        break;
+      case 'auth/email-already-exists':
+        error = 'El correo electronico que ingreso ya esta registrado';
+        break;
+      default:
+        error = 'Error inesperado';
+        break;
+    }
+    this.notify.show(error, null);
   }
 
   signOut() {

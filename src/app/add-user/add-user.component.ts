@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { Places } from '../places';
 import { AuthService } from '../core/auth.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { NotifyService } from '../core/notify.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.sass']
+  styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent {
 
@@ -47,7 +48,8 @@ export class AddUserComponent {
   constructor(private fb: FormBuilder,
               private afs: AngularFirestore,
               private auth: AuthService,
-              private dialogRef: MatDialogRef<AddUserComponent>) {
+              private dialogRef: MatDialogRef<AddUserComponent>,
+              private notify: NotifyService) {
 
     this.itemsCollection = afs.collection<Places>('places');
     this.places = this.itemsCollection.snapshotChanges().map(actions => {
@@ -80,18 +82,13 @@ export class AddUserComponent {
   }
 
   submit() {
-    this.submited = true;
     this.user = this.addForm.value;
-    this.auth.createUser(this.user).then(resolve => {
-      console.log(resolve);
-    });
-    /* this.auth.createUserWithEmail(this.addForm.value.email, this.addForm.value.password).then(value => {
-      console.log('User ' + value.uid + ' created successfully!');
-      console.log(value);
+    this.auth.createUserFinal(this.user).then(resolve => {
+      console.log(resolve, 'entro');
+      this.notify.show('Usuario creado correctamente', null);
+      this.notify.hideLoader();
       this.dialogRef.close();
-    }).catch(error => {
-      console.log(error);
-      this.submited = !this.submited;
-    }); */
+    });
   }
+
 }

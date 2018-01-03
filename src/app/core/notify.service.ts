@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+import { LoaderState } from './loader';
 import { Subject } from 'rxjs/Subject';
-
-export interface Msg {
-  content: string;
-  style: string;
-}
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class NotifyService {
 
-  private _msgSource = new Subject<Msg>();
+  private loaderSubject = new Subject<LoaderState>();
 
-  msg = this._msgSource.asObservable();
-  constructor() { }
+  constructor(public snackBar: MatSnackBar) {
+    console.log('cargooo');
+   }
 
-  update(content: string, style: string) {
-    const msg: Msg = { content, style };
-    this._msgSource.next(msg);
+  show(content: string, action: string) {
+    this.snackBar.open(content, action, {
+      duration: 3000
+    });
   }
 
-  clear() {
-    this._msgSource.next(null);
+  showLoader() {
+    this.loaderSubject.next(<LoaderState>{show: true});
+  }
+
+  hideLoader() {
+    this.loaderSubject.next(<LoaderState>{show: false});
+  }
+
+  getLoader(): Observable<LoaderState> {
+    return this.loaderSubject.asObservable();
   }
 }

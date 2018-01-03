@@ -68,8 +68,8 @@ apiRouter.route('/users')
         handleError(res, err.message, 'Failed');
       });
     }).catch(function(e) {
-      res.json(e);
-      handleError(res, e.message, 'Failed');
+      //res.json(e);
+      handleError(res, e.message, 'Failed', e.code);
     })
   });
 
@@ -91,9 +91,9 @@ app.listen(port);
 console.log('port: ' + port);
 
 
-function handleError(res, reason, message, code) {
+function handleError(res, reason, message, fireCode) {
   console.log("ERROR: " + reason);
-  res.status(code || 500).json({
-    "error": message
+  res.status(500).json({
+    "error": fireCode
   });
 }

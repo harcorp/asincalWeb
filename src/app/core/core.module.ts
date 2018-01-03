@@ -6,15 +6,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { NotifyService } from './notify.service';
 import { PlaceNamePipe } from './place-name.pipe';
 import { DocTypePipe } from './doc-type.pipe';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MaterialModule
   ],
-  providers: [AuthService, NotifyService],
-  declarations: [PlaceNamePipe, DocTypePipe],
+  providers: [ AuthService, NotifyService ],
+  declarations: [ PlaceNamePipe, DocTypePipe ],
   exports: [ PlaceNamePipe, DocTypePipe ]
 })
 export class CoreModule { }
