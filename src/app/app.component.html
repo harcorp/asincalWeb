@@ -1,43 +1,33 @@
 <div [class.loader-hidden]="!show">
   <div class="loader-overlay">
-          <div>
-            <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
-          </div>
+    <div>
+      <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+    </div>
   </div>
 </div>
-<mat-toolbar color="primary" *ngIf="(auth.user | async)">
-    <mat-toolbar-row>
-      <span class="logo-header"><img src="assets/asincal-logo.png" height="100px"/></span>
-  
-      <span class="example-spacer"></span>
-      
-      <a mat-button routerLink="/" >Dashboard</a>
-      <a mat-button routerLink="/usuarios" >Usuarios</a>
-      <a mat-button routerLink="/establecimientos" >Establecimientos</a>
-      <button mat-button>Contact</button>
-      <button mat-button (click)="auth.signOut()">Cerrar Sesión</button>
-    </mat-toolbar-row>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" opened="false" class="asincal-sidenav" fixedInViewport="true">
+    <side-nav-menu [sidenav]="sidenav">
+      <side-nav-item route="/state" title="Menu State" icon="home"></side-nav-item>
+      <side-nav-item route="/page1" title="Page 1" icon="assignment"></side-nav-item>
+      <side-nav-group>
+        <side-nav-item route="/page2" title="Page 2"></side-nav-item>
+        <side-nav-item route="/page3" title="Page 3"></side-nav-item>
+      </side-nav-group>
+      <side-nav-group title="submenu 4">
+        <side-nav-item route="/page/4.1" title="Page 4.1 xxxxx xxxxx"></side-nav-item>
+        <side-nav-item route="/page/4.2" title="Page 4.2"></side-nav-item>
+      </side-nav-group>
+      <side-nav-item route="/page/5" title="Page 5"></side-nav-item>
+      <side-nav-item route="/page/6" title="Page 6" icon="info"></side-nav-item>
+    </side-nav-menu>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>mat-sidenav-menu Demo</span>
   </mat-toolbar>
-  <mat-toolbar color="primary" *ngIf="!(auth.user | async)">
-      <mat-toolbar-row>
-        <span>Asincal</span>
-    
-        <span class="example-spacer"></span>
-        
-        <button mat-button>Registro</button>
-        <button mat-button>Login</button>
-      </mat-toolbar-row>
-    </mat-toolbar>
-    
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
 
-<div *ngIf="notify.msg | async as msg" class="notification"
-        [ngClass]="{ 
-                     'is-danger': msg.style == 'error',
-                     'is-success': msg.style == 'success',
-                     'is-info': msg.style == 'info'
-                    }">
-     
-     <button class="delete" (click)="notify.clear()"></button>
-     {{ msg.content }}
- </div>

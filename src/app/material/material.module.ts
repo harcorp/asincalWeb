@@ -17,14 +17,16 @@ import {
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatProgressBarModule,
-  
+  MatSidenavModule
 } from '@angular/material';
+import { SideNavMenuModule } from 'mat-sidenav-menu';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
     MatToolbarModule,
+    MatSidenavModule,
     MatCardModule,
     MatInputModule,
     MatTableModule,
@@ -38,11 +40,13 @@ import {
     MatSelectModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    SideNavMenuModule,
   ],
   exports: [
     MatButtonModule,
     MatToolbarModule,
+    MatSidenavModule,
     MatCardModule,
     MatInputModule,
     MatTableModule,
@@ -56,7 +60,8 @@ import {
     MatSelectModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    SideNavMenuModule
   ],
   declarations: []
 })
