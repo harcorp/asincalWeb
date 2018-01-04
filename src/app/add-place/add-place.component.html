@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Agregar Establecimiento</h2>
+<mat-dialog-content>
+  <form [formGroup]="addForm">
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Nombre" formControlName="name" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['name'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Celular" formControlName="phone" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['phone'].valid">
+        Ingrese un telefono valido de 10 digitos
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Dirección" formControlName="address" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['address'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Ciudad" formControlName="city" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['city'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Departamento" formControlName="state" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="!addForm.controls['state'].valid">
+        Este campo es requerido
+      </mat-error>
+    </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-select placeholder="Administrador Asociado" formControlName="adminUid" [errorStateMatcher]="matcher">
+            <mat-option *ngFor="let user of users | async" [value]="user.id">
+              {{ user.firstName }} {{ user.lastName }} | {{ user.email }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    <button mat-button color="primary" (click)="submit()" [disabled]="!addForm.valid">Agregar</button>
+    <!-- <button mat-button color="primary" (click)="submit()">Registrar</button> -->
+
+  </form>
+</mat-dialog-content>

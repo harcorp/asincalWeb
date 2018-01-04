@@ -14,7 +14,7 @@
       <mat-nav-list>
         <mat-list-item>
           <h3 matLine>Administrador </h3>
-          <p matLine> {{place.adminUid }}</p>
+          <p matLine> {{place.adminUid | adminName | async }}</p>
         </mat-list-item>
       </mat-nav-list>
     </mat-grid-tile>

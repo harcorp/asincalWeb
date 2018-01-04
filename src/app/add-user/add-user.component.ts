@@ -30,7 +30,6 @@ export class AddUserComponent {
   user: User = null;
   addForm: any;
   submited = false;
-  emailFormControl: any;
   docType = [
     'Cedula de Ciudadania',
     'Cedula de extrangeria',

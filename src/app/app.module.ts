@@ -19,6 +19,7 @@ import { PlacesComponent } from './places/places.component';
 import { EditPlaceComponent } from './edit-place/edit-place.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { Http } from '@angular/http';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { Http } from '@angular/http';
     EditUserComponent,
     PlacesComponent,
     EditPlaceComponent,
-    AddUserComponent
+    AddUserComponent,
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,6 @@ import { Http } from '@angular/http';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditUserComponent, EditPlaceComponent, AddUserComponent]
+  entryComponents: [EditUserComponent, EditPlaceComponent, AddUserComponent, AddPlaceComponent]
 })
 export class AppModule { }

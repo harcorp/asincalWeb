@@ -7,6 +7,8 @@ import { NotifyService } from './notify.service';
 import { PlaceNamePipe } from './place-name.pipe';
 import { DocTypePipe } from './doc-type.pipe';
 import { MaterialModule } from '../material/material.module';
+import { AdminNamePipe } from './admin-name.pipe';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import { MaterialModule } from '../material/material.module';
     MaterialModule
   ],
   providers: [ AuthService, NotifyService ],
-  declarations: [ PlaceNamePipe, DocTypePipe ],
-  exports: [ PlaceNamePipe, DocTypePipe ]
+  declarations: [ PlaceNamePipe, DocTypePipe, AdminNamePipe, ConfirmDialogComponent ],
+  exports: [ PlaceNamePipe, DocTypePipe, AdminNamePipe ],
+  entryComponents: [ConfirmDialogComponent]
 })
 export class CoreModule { }

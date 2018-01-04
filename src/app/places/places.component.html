@@ -1,4 +1,5 @@
 <div class="container mat-elevation-z8">
+  <button mat-raised-button color="accent" (click)="addPlace()">Agregar Establecimiento</button>
   <div class="header">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
@@ -15,19 +16,22 @@
     </ng-container>
     <ng-container matColumnDef="address">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </mat-header-cell>
-      <mat-cell *matCellDef="let place"> {{place.address}} </mat-cell>
+      <mat-cell *matCellDef="let place"> {{place.address }} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
       <mat-cell *matCellDef="let place">
         <button mat-raised-button color="primary" (click)="openDialog(place)">Ver</button>
+        <button mat-raised-button color="warn" (click)="delete(place.uid)">Eliminar</button>
+
       </mat-cell>
     </ng-container>
-
+    
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
   <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50, 100]">
   </mat-paginator>
+  
 </div>

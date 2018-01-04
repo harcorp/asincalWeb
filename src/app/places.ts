@@ -6,5 +6,5 @@ export interface Places {
     active: boolean;
     city: string;
     state: string;
-    phone: string;
+    phone: number;
 }
