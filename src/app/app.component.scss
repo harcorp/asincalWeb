@@ -2,7 +2,7 @@
   padding: 0 14px;
 }
 
-.example-spacer {
+.asincal-spacer {
   flex: 1 1 auto;
 }
 
@@ -19,6 +19,45 @@
   z-index: 500000;
 }
 
-.mat-toolbar-row{
-  padding-top: 30px;
+.asincal-container {
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.asincal-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: rgb(211, 211, 211);
+}
+
+.asincal-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.asincal-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-drawer-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.logo-header {
+  padding-top: 6px;
+}
+.logo-header img{
+  height: 40px;
+  
 }

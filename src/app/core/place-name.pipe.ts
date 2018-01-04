@@ -17,7 +17,9 @@ export class PlaceNamePipe implements PipeTransform {
     }
     return new Promise(resolve => {
       this.afs.doc<Places>(`places/${value}`).valueChanges().subscribe(val => {
-        resolve(val['name']);
+        if (val != null) {
+          resolve(val['name']);
+        }
      });
     });
   }

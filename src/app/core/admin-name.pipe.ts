@@ -14,7 +14,9 @@ export class AdminNamePipe implements PipeTransform {
     }
     return new Promise(resolve => {
       this.afs.doc<User>(`users/${value}`).valueChanges().subscribe(val => {
-        resolve(val['firstName'] + ' ' + val['lastName']);
+        if (val != null) {
+          resolve(val['firstName'] + ' ' + val['lastName']);
+        }
       });
     });
   }
