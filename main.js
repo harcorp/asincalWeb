@@ -4,7 +4,7 @@ var express = require('express'),
   morgan = require('morgan'),
   admin = require("firebase-admin");
 
-const serviceAccount = require('./asincal-6d074-firebase-adminsdk-0e5sj-34ad4674a2.json');
+const serviceAccount = require('./asincal.json');
 var port = process.env.PORT || 6969;
 
 admin.initializeApp({
