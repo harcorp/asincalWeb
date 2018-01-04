@@ -8,8 +8,9 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" opened="false" class="asincal-sidenav" fixedInViewport="true">
     <side-nav-menu [sidenav]="sidenav">
-      <side-nav-item route="/state" title="Menu State" icon="home"></side-nav-item>
-      <side-nav-item route="/page1" title="Page 1" icon="assignment"></side-nav-item>
+      <side-nav-item route="/" title="Dashboard" icon="home"></side-nav-item>
+      <side-nav-item route="/usuarios" title="Usuarios" icon="assignment"></side-nav-item>
+      <side-nav-item route="/establecimientos" title="Establecimientos" icon="assignment"></side-nav-item>
       <side-nav-group>
         <side-nav-item route="/page2" title="Page 2"></side-nav-item>
         <side-nav-item route="/page3" title="Page 3"></side-nav-item>
@@ -26,7 +27,7 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>mat-sidenav-menu Demo</span>
+    <span class="logo-header"><img src="assets/asincal-text.png" alt="Asincal"></span>
   </mat-toolbar>
   <router-outlet></router-outlet>
 </mat-sidenav-container>
